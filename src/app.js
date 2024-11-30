@@ -52,10 +52,31 @@ const templateTwo = (
     </div>
 )
 
+
+let count = 0;
+const addOne = () => {
+    console.log("Add One")
+}
+const minusOne = () => {
+    console.log("Minus One")
+}
+const resetCount = () => {
+    console.log("Reset Count")
+}
+
+const templateThree = (
+    <div>
+        <h1>Count: {count}</h1>
+        <button id="incr-button" onClick={addOne}>+1</button>
+        <button id="decr-button" onClick={minusOne}>-1</button>
+        <button id="reset-button" onClick={resetCount}>Reset</button>
+    </div>
+)
+
 // COMMAND: babel src/app.js --out-file=public/script/app.js --presets=env,react --watch
 
 
 const appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot)
+ReactDOM.render(templateThree, appRoot)
 // ReactDOM.render(templateTwo, appRoot)
