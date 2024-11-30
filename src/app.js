@@ -11,12 +11,12 @@ function renderOptions (options) {
 }
 
 // JSX - JavaScript XML
-var pageData = {
+const pageData = {
     'title' : "Indecision App",
     'subtitle' : "The most needed Decision App",
     'options' : ["One", "Two"]
 };
-var template = (
+const template = (
     <div>
         <h1>{pageData.title}</h1>
         {pageData.subtitle && <p>{pageData.subtitle}</p>}
@@ -33,7 +33,7 @@ var template = (
 
 
 // Render templatetwo instead of template
-var user = {
+const user = {
     name: 'Mr. Narendra Babu',
     age: 30,
     location: 'Bengaluru East'
@@ -44,8 +44,7 @@ function getLocation(location) {
         return <p>Location: {location}</p>
     }
 }
-
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name? user.name : "Anonymous"}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
@@ -56,7 +55,7 @@ var templateTwo = (
 // COMMAND: babel src/app.js --out-file=public/script/app.js --presets=env,react --watch
 
 
-var appRoot = document.getElementById('app')
+const appRoot = document.getElementById('app')
 
 ReactDOM.render(template, appRoot)
 // ReactDOM.render(templateTwo, appRoot)
