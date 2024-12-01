@@ -10,26 +10,29 @@ function renderOptions (options) {
 
 }
 
+
 // JSX - JavaScript XML
 const pageData = {
     'title' : "Indecision App",
     'subtitle' : "The most needed Decision App",
-    'options' : ["One", "Two"]
+    'options' : []
 };
-const template = (
-    <div>
-        <h1>{pageData.title}</h1>
-        {pageData.subtitle && <p>{pageData.subtitle}</p>}
-        <p>{renderOptions(pageData.options)}</p>
-        {
-            renderOptions(pageData.options) &&
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-            </ol>
-        }
-    </div>
-)
+
+const onFormSubmit = (e) => {
+    e.preventDefault()
+    const element = e.target.elements[0].value
+    if (element) {
+        pageData.options.push(element)
+        e.target.elements[0].value = ''
+        console.log(pageData.options)
+        renderOptionsApp()
+    }
+}
+
+const emptyArray = () => {
+    pageData.options = []
+    renderOptionsApp()
+}
 
 
 // Render templatetwo instead of template
@@ -44,6 +47,7 @@ function getLocation(location) {
         return <p>Location: {location}</p>
     }
 }
+
 const templateTwo = (
     <div>
         <h1>{user.name? user.name : "Anonymous"}</h1>
@@ -56,3 +60,35 @@ const templateTwo = (
 // COMMAND: babel src/app.js --out-file=public/script/app.js --presets=env,react --watch
 
 const appRoot = document.getElementById('app')
+
+
+const renderOptionsApp = () => {
+
+    const template = (
+        <div>
+            <h1>{pageData.title}</h1>
+            {pageData.subtitle && <p>{pageData.subtitle}</p>}
+            <p>{renderOptions(pageData.options)}</p>
+            <p>{pageData.options.length}</p>
+            {
+                renderOptions(pageData.options) &&
+                <div>
+                    {pageData.options.length >= 1 && <button onClick={emptyArray}>Remove All</button>}
+                    <ol>
+                        {(pageData.options.length >= 1) && pageData.options.map(
+                            (option) => <li>{option}</li>
+                        )}
+                    </ol>
+                    <form onSubmit={onFormSubmit}>
+                        <input type="text" name="option" />
+                        <button>Add Option</button>
+                    </form>
+                </div>
+            }
+        </div>
+    )
+
+    ReactDOM.render(template, appRoot)
+}
+
+renderOptionsApp()
