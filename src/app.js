@@ -34,6 +34,12 @@ const emptyArray = () => {
     renderOptionsApp()
 }
 
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * pageData.options.length)
+    if (pageData.options.length > 0) {
+        alert(pageData.options[randomNum])
+    }
+}
 
 // Render templatetwo instead of template
 const user = {
@@ -74,6 +80,7 @@ const renderOptionsApp = () => {
                 renderOptions(pageData.options) &&
                 <div>
                     {pageData.options.length >= 1 && <button onClick={emptyArray}>Remove All</button>}
+                    <button disabled={pageData.options.length === 0} onClick={onMakeDecision} >What should I do?</button>
                     <ol>
                         {(pageData.options.length >= 1) && pageData.options.map(
                             (option) => <li>{option}</li>
