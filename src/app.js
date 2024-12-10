@@ -37,16 +37,23 @@ class Action extends React.Component {
 }
 
 
-// Options -> Options Component Here
 class Options extends React.Component {
+    constructor() {
+        super();
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+    handleRemoveAll() {
+        alert("Alert! Remove all!")
+    }
     render() {
         return (
             <div>
                 <h3>Count: {this.props.optionsArray.length}</h3>
                 <p>Here are your options:</p>
-                <ol>
+                <div>
                     {this.props.optionsArray.map((option) => <Option optionText={option}/>)}
-                </ol>
+                </div>
+                <button onClick={this.handleRemoveAll}>Remove All</button>
             </div>
         )
     }
@@ -57,7 +64,9 @@ class Option extends React.Component {
     render() {
         console.log()
         return (
-            <li>{this.props.optionText}</li>
+            <div>
+                {this.props.optionText}
+            </div>
         )
     }
 }
@@ -65,12 +74,25 @@ class Option extends React.Component {
 
 // AddOption -> AddOption Component Here
 class AddOption extends React.Component {
+    constructor() {
+        super();
+        this.handleAddOption = this.handleAddOption.bind(this);
+    }
+    handleAddOption(e) {
+        e.preventDefault()
+
+        const option = e.targer.elements.option.value
+
+        if (option) {
+            alert("Alert! Add Option!")
+        }
+    }
     render() {
         return (
             <div>
                 <form>
                     <input type="text" name="option" />
-                    <button>Add Option</button>
+                    <button key="submitButton" onSubmit={this.handleAddOption}>Add Option</button>
                 </form>
             </div>
         )
