@@ -5,7 +5,7 @@ class IndecisionApp extends React.Component {
         this.handlePick = this.handlePick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
-            options : ['naren', 'web-dev', 'orator', 'to-be']
+            options : ['learn react', 'learn gen ai', 'go to swim', 'revel in yourself']
         }
     }
 
@@ -59,55 +59,95 @@ class IndecisionApp extends React.Component {
     }
 }
 
+// class Header extends React.Component {
+//     render(){
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <p>{this.props.subtitle}</p>
+//             </div>
+//         )
+//     }
+// }
 
-class Header extends React.Component {
-    render(){
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <p>{this.props.subtitle}</p>
-            </div>
-        )
-    }
+// Functional Based Component for Header
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <p>{props.subtitle}</p>
+        </div>
+    )
+}
+
+// class Action extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 <button onClick={this.props.handlePick}>What should I do?</button>
+//             </div>
+//         )
+//     }
+// }
+
+// Functional Based Component for Action
+const Action = (props) => {
+    return (
+        <div>
+            <button onClick={props.handlePick}>What should I do?</button>
+        </div>
+    )
 }
 
 
-class Action extends React.Component {
-    render() {
-        return (
+// class Options extends React.Component {
+
+//     render() {
+//         return (
+//             <div>
+//                 <h3>Count: {this.props.optionsArray.length}</h3>
+//                 <p>Here are your options:</p>
+//                 <div>
+//                     {this.props.optionsArray.map((option) => <Option key={option} optionText={option}/>)}
+//                 </div>
+//                 <button onClick={this.props.handleRemoveAll}>Remove All</button>
+//             </div>
+//         )
+//     }
+// }
+
+
+// Functional Component for Options
+const Options = (props) => {
+    return (
+        <div>
+            <h3>Count: {props.optionsArray.length}</h3>
+            <p>Here are your options:</p>
             <div>
-                <button onClick={this.props.handlePick}>What should I do?</button>
+                {props.optionsArray.map((option) => <Option key={option} optionText={option}/>)}
             </div>
-        )
-    }
+            <button onClick={props.handleRemoveAll}>Remove All</button>
+        </div>
+    )
 }
 
+// class Option extends React.Component {
+//     render() {
+//         return (
+//             <div key={this.props.optionText}>
+//                 {this.props.optionText}
+//             </div>
+//         )
+//     }
+// }
 
-class Options extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <h3>Count: {this.props.optionsArray.length}</h3>
-                <p>Here are your options:</p>
-                <div>
-                    {this.props.optionsArray.map((option) => <Option key={option} optionText={option}/>)}
-                </div>
-                <button onClick={this.props.handleRemoveAll}>Remove All</button>
-            </div>
-        )
-    }
-}
-
-
-class Option extends React.Component {
-    render() {
-        return (
-            <div key={this.props.optionText}>
-                {this.props.optionText}
-            </div>
-        )
-    }
+// Functional Component for Option
+const Option = (props) => {
+    return (
+        <div key={props.optionText}>
+            {props.optionText}
+        </div>
+    )
 }
 
 
@@ -142,6 +182,16 @@ class AddOption extends React.Component {
             </div>
         )
     }
+}
+
+// Sample Functional Based Components
+const User = (props) => {
+    return (
+        <div>
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+        </div>
+    )
 }
 
 
