@@ -5,9 +5,15 @@
   "repository": "git@github.com:narendra119/REACT-indecision-app.git",
   "author": "pbabu01t <pbabu01t@knowledgenettest.onmicrosoft.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel src/app.js --out-file=public/script/app.js --presets=env,react --watch",
+    "serve": "live-server public"
+  },
   "dependencies": {
     "axios": "^1.7.8",
+    "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "live-server": "^1.2.2"
   }
 }
